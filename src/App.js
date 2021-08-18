@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+// import fetch from 'cross-fetch';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  componentDidMount(){
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    // .then(response => response.json())
+    // .then(data => console.log(data));
+    
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.data)
+      .then(data => console.log(data));
+  }
+
+
+  render(){
+    return (
+      <div className="App">
+        <h1>hello</h1>
+      </div>
+    );
+  }
 }
 
 export default App;
