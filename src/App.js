@@ -5,6 +5,12 @@ import axios from 'axios';
 
 class App extends Component {
 
+
+  state = {
+    dishas: null,
+    errorMessage: null
+  }
+
   componentDidMount(){
     // fetch("https://jsonplaceholder.typicode.com/posts")
     // .then(response => response.json())
@@ -12,8 +18,15 @@ class App extends Component {
     
     axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.data)
-      .then(data => console.log(data))
-      .catch(error => console.log(error.message));
+      .then(data => {
+        this.setState({
+          dishas:data})
+       })
+      .catch(error => {
+        this.setState({
+          errorMessage: error.message
+        })
+      });
 
     
     // axios.post('https://jsonplaceholder.typicode.com/posts', 
@@ -44,6 +57,11 @@ class App extends Component {
     // })
     // .then(response => console.log(response))
 
+  }
+
+
+  componentDidUpdate(){
+    console.log(this.state);
   }
 
 
